@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import '../css/App.css';
 import Todo from '../../Todo/js/Todo';
 import TodoForm from '../../TodoForm/js/TodoForm';
 
-function App() {
-  const [todos, setTodos] = useState([
+const App = props => {
+  const [todos, setTodos] = useState([ //[] = deconstructing
     {
       text: "Learn about React",
       isCompleted: false
@@ -19,18 +19,18 @@ function App() {
     }
   ]);
 
-  const addTodo = text => {
+  const addTodoHandler = (text) => {
     const newTodos = [...todos, { text }];
     setTodos(newTodos);
   };
 
-  const completeTodo = index => {
+  const completeTodoHandler = (index) => {
     const newTodos = [...todos];
     newTodos[index].isCompleted = true;
     setTodos(newTodos);
   };
 
-  const removeTodo = index => {
+  const removeTodoHandler = (index) => {
     const newTodos = [...todos];
     newTodos.splice(index, 1);
     setTodos(newTodos);
@@ -44,11 +44,11 @@ function App() {
             key={index}
             index={index}
             todo={todo}
-            completeTodo={completeTodo}
-            removeTodo={removeTodo}
+            completeTodo={completeTodoHandler}
+            removeTodo={removeTodoHandler}
           />
         ))}
-        <TodoForm addTodo={addTodo} />
+        <TodoForm addTodo={addTodoHandler} />
       </div>
     </div>
   );
