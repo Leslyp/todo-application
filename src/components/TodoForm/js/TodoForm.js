@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import '../css/TodoForm.css';
 
-function TodoForm({ addTodo }) {
+const TodoForm = ({ addTodo }) => {
   const [value, setValue] = useState("");
 
-  const handleSubmit = e => {
+  const submitHandler = e => {
     e.preventDefault();
     if (!value) return;
     addTodo(value);
@@ -12,7 +12,7 @@ function TodoForm({ addTodo }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={submitHandler}>
       <input
         type="text"
         className="input"
