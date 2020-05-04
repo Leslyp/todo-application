@@ -1,57 +1,46 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
+import * as actionTypes from '../../../store/actions';
+
 import '../css/App.css';
 import Todo from '../../Todo/js/Todo';
 import TodoForm from '../../TodoForm/js/TodoForm';
 
-const App = props => {
-  const [todos, setTodos] = useState([ //[] = deconstructing
-    {
-      text: "Learn about React",
-      isCompleted: false
-    },
-    {
-      text: "Meet friend for lunch",
-      isCompleted: false
-    },
-    {
-      text: "Build really cool todo app",
-      isCompleted: false
-    }
-  ]);
-
-  const addTodoHandler = (text) => {
-    const newTodos = [...todos, { text }];
-    setTodos(newTodos);
-  };
-
-  const completeTodoHandler = (index) => {
-    const newTodos = [...todos];
-    newTodos[index].isCompleted = true;
-    setTodos(newTodos);
-  };
-
-  const removeTodoHandler = (index) => {
-    const newTodos = [...todos];
-    newTodos.splice(index, 1);
-    setTodos(newTodos);
-  };
-
+const App = ({ todoList, completeTodo, removeTodo, addTodo }) => {
   return (
     <div className="app">
       <div className="todo-list">
-        {todos.map((todo, index) => (
+        {todoList && todoList.map((todo, index) => (
           <Todo
             key={index}
             index={index}
             todo={todo}
-            completeTodo={completeTodoHandler}
-            removeTodo={removeTodoHandler}
+            completeTodo={completeTodo}
+            removeTodo={removeTodo}
           />
         ))}
-        <TodoForm addTodo={addTodoHandler} />
+
+        <TodoForm addTodo={addTodo} />
       </div>
     </div>
   );
 }
 
-export default App;
+// setting up subscription
+const mapStateToProps = state => {
+  return {
+    todoList: state.todos
+  };
+};
+
+// setting up action
+const mapDispatchToProps = dispatch => {
+  return {
+    removeTodo: (id) => dispatch({type: actionTypes.REMOVE_TODO, todoId: id}),
+    addTodo: (value) => dispatch({type: actionTypes.ADD_TODO, todoValue: value}),
+    completeTodo: (id) => dispatch({type: actionTypes.COMPLETE_TODO, todoId: id}),
+  };
+};
+
+// setting up connect
+export default connect(mapStateToProps, mapDispatchToProps)(App);
