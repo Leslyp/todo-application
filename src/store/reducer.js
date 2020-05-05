@@ -30,19 +30,18 @@ const reducer = ( state = initialState, action) => {
                 text: action.todoValue,
                 isCompleted: false
             });
-
             return {
                 ...state,
                 todos: UpdatedAfterAdd
             };
         case actionTypes.COMPLETE_TODO:
             const UpdatedAfterCompleted = state.todos.map((todo, index) => { //  map creates new array populated with the results of calling a function on every element in array
-                if (index === action.todoId) {
-                  todo.isCompleted = !todo.isCompleted
-                  return todo
+                if (index === action.todoIndex) {
+                    todo.isCompleted = true
+                    return todo
                 }
                 return todo
-              })
+            })
             return {
                 ...state,
                 todos: UpdatedAfterCompleted
