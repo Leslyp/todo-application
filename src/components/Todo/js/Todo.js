@@ -3,16 +3,20 @@ import '../css/Todo.css';
 
 const todo = ({ todo, index, completeTodo, removeTodo }) => {
   return (
-    <div
+    <li
       className="todo"
       style={{ textDecoration: todo.isCompleted ? "line-through" : "" }}
     >
       {todo.text}
-      <div>
-        <button onClick={() => completeTodo(index)}>Complete</button>
-        <button onClick={() => removeTodo(index)}>x</button>
+      <div className="button-container">
+        <button className="button button--complete" onClick={() => completeTodo(index)}>
+          <img className="icon" src={require('../../../assets/img/icon-check.png')} alt="Checkmark"/>
+        </button>
+        <button className="button button--remove" onClick={() => removeTodo(index)}>
+          <img className="icon" src={require('../../../assets/img/icon-remove.png')} alt="Checkmark"/>
+        </button>
       </div>
-    </div>
+    </li>
   );
 }
 

@@ -9,18 +9,19 @@ import TodoForm from '../../TodoForm/js/TodoForm';
 const App = ({ todoList, completeTodo, removeTodo, addTodo }) => {
   return (
     <div className="app">
-      <div className="todo-list">
-        {todoList && todoList.map((todo, index) => (
-          <Todo
-            key={index}
-            index={index}
-            todo={todo}
-            completeTodo={completeTodo}
-            removeTodo={removeTodo}
-          />
-        ))}
-
-        <TodoForm addTodo={addTodo} />
+      <div className="bg">
+        <ul className="todo-list">
+          {todoList && todoList.map((todo, index) => (
+            <Todo
+              key={index}
+              index={index}
+              todo={todo}
+              completeTodo={completeTodo}
+              removeTodo={removeTodo}
+            />
+          ))}
+          <TodoForm addTodo={addTodo} />
+        </ul>
       </div>
     </div>
   );
@@ -38,7 +39,7 @@ const mapDispatchToProps = dispatch => {
   return {
     removeTodo: (id) => dispatch({type: actionTypes.REMOVE_TODO, todoId: id}),
     addTodo: (value) => dispatch({type: actionTypes.ADD_TODO, todoValue: value}),
-    completeTodo: (id) => dispatch({type: actionTypes.COMPLETE_TODO, todoId: id}),
+    completeTodo: (index) => dispatch({type: actionTypes.COMPLETE_TODO, todoIndex: index}),
   };
 };
 

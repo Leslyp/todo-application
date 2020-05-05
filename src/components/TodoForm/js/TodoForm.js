@@ -13,7 +13,9 @@ const TodoForm = ({ addTodo }) => {
 
   return (
     <form onSubmit={submitHandler}>
+      <label for="item">Add Todo:</label>
       <input
+        id="item"
         type="text"
         className="input"
         value={value}

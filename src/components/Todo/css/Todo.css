@@ -1,11 +1,33 @@
 .todo {
-  background: #fff;
-  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
-  padding: 3px 10px;
-  font-size: 12px;
-  margin-bottom: 6px;
-  border-radius: 3px;
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  margin: 10px 0;
+}
+
+.button-container {
+  display: inline-block
+}
+
+.button {
+  background-color: transparent;
+  border: none;
+  border-radius: 3px;
+  margin: 0 5px;
+}
+
+.icon {
+  height: 40px;
+  width: 40px;
+}
+
+
+@media screen and (max-width: 800px){
+  .todo {
+    font-size: 16px;
+  }
+
+  .icon {
+    height: 30px;
+    width: 30px;
+  }
 }
