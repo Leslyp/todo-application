@@ -7,11 +7,11 @@ const initialState = {
             isCompleted: false
         },
         {
-            text: "Meet friend for lunch",
+            text: "Build a todo app",
             isCompleted: false
         },
         {
-            text: "Build really cool todo app",
+            text: "Run through code review for todo app",
             isCompleted: false
         }
     ]

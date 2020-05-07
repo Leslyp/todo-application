@@ -7,7 +7,7 @@ const todo = ({ todo, index, completeTodo, removeTodo }) => {
       className="todo"
       style={{ textDecoration: todo.isCompleted ? "line-through" : "" }}
     >
-      {todo.text}
+      <span>{todo.text}</span>
       <div className="button-container">
         <button className="button button--complete" onClick={() => completeTodo(index)}>
           <img className="icon" src={require('../../../assets/img/icon-check.png')} alt="Checkmark"/>

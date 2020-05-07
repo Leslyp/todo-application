@@ -7,21 +7,30 @@ import Todo from '../../Todo/js/Todo';
 import TodoForm from '../../TodoForm/js/TodoForm';
 
 const App = ({ todoList, completeTodo, removeTodo, addTodo }) => {
+  
+  let todos = null;
+  
+  if (todoList) {
+    todos = (
+      <ul className="todo-list">
+        {todoList && todoList.map((todo, index) => (
+          <Todo
+            key={index}
+            index={index}
+            todo={todo}
+            completeTodo={completeTodo}
+            removeTodo={removeTodo}
+          />
+        ))}
+        <TodoForm addTodo={addTodo} />
+      </ul>
+    )
+  }
+
   return (
     <div className="app">
       <div className="bg">
-        <ul className="todo-list">
-          {todoList && todoList.map((todo, index) => (
-            <Todo
-              key={index}
-              index={index}
-              todo={todo}
-              completeTodo={completeTodo}
-              removeTodo={removeTodo}
-            />
-          ))}
-          <TodoForm addTodo={addTodo} />
-        </ul>
+        {todos}
       </div>
     </div>
   );

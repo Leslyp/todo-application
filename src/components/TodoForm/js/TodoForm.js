@@ -6,14 +6,14 @@ const TodoForm = ({ addTodo }) => {
 
   const submitHandler = e => {
     e.preventDefault();
-    if (!value) return;
+    if (!value || value.trim() === '') return;
     addTodo(value);
     setValue("");
   };
 
   return (
     <form onSubmit={submitHandler}>
-      <label for="item">Add Todo:</label>
+      <label htmlFor="item">Add Todo:</label>
       <input
         id="item"
         type="text"
