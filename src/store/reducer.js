@@ -46,6 +46,8 @@ const reducer = ( state = initialState, action) => {
                 ...state,
                 todos: UpdatedAfterCompleted
             };
+        default:
+            break;
     }
     return state;
 };
