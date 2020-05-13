@@ -20,13 +20,13 @@ const initialState = {
 const reducer = ( state = initialState, action) => {
     switch (action.type) {
         case actionTypes.REMOVE_TODO:
-            const UpdatedAfterRemove = state.todos.filter((todo, index) => index !== action.todoId); // filter creates new array with all elements that pass the test implemented by the provided function
+            const UpdatedAfterRemove = state.todos.filter((todo, index) => index !== action.todoId);
             return {
                 ...state,
                 todos: UpdatedAfterRemove
             };
         case actionTypes.ADD_TODO:
-            const UpdatedAfterAdd = state.todos.concat({ // concat returns new array with added item, this way og array is not modified
+            const UpdatedAfterAdd = state.todos.concat({
                 text: action.todoValue,
                 isCompleted: false
             });
@@ -35,7 +35,7 @@ const reducer = ( state = initialState, action) => {
                 todos: UpdatedAfterAdd
             };
         case actionTypes.COMPLETE_TODO:
-            const UpdatedAfterCompleted = state.todos.map((todo, index) => { //  map creates new array populated with the results of calling a function on every element in array
+            const UpdatedAfterCompleted = state.todos.map((todo, index) => {
                 if (index === action.todoIndex) {
                     todo.isCompleted = true
                     return todo
